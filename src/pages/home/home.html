@@ -1,0 +1,17 @@
+<ion-header no-border>
+  <ion-navbar [color]="(canEat.check() | async) ? 'secondary' : 'dark'">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content [ngClass]="(canEat.check() | async) ? 'light' : 'dark'">
+  <ion-grid text-center class="can-eat-grid">
+    <ion-row align-items-center>
+      <ion-col class="text">
+        {{(canEat.check() | async) ? 'Yes!' : 'No.'}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,13 @@
+page-home {
+  .can-eat-grid {
+    height: 100%;
+
+    > ion-row:nth-child(1) {
+      height: 100%;
+    }
+
+    .text {
+      font-size: 10em;
+    }
+  }
+}
