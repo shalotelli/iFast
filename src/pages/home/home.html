@@ -13,5 +13,23 @@
         {{(canEat.check() | async) ? 'Yes!' : 'No.'}}
       </ion-col>
     </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <strong>Fajr</strong>
+        <br>
+        {{(prayerTimes.getTimesObservable() | async)?.fajr}}
+      </ion-col>
+      <ion-col>
+        <strong>Dhuhr</strong>
+        <br>
+        {{(prayerTimes.getTimesObservable() | async)?.dhuhr}}
+      </ion-col>
+      <ion-col>
+        <strong>Maghrib</strong>
+        <br>
+        {{(prayerTimes.getTimesObservable() | async)?.maghrib}}
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>

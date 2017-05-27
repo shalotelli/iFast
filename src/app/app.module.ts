@@ -11,6 +11,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PrayerTimesProvider } from '../providers/prayer-times/prayer-times';
 import { CanEatProvider } from '../providers/can-eat/can-eat';
+import { LocationProvider } from '../providers/location/location';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CanEatProvider } from '../providers/can-eat/can-eat';
       provide: ErrorHandler, 
       useClass: IonicErrorHandler
     },
-    CanEatProvider
+    CanEatProvider,
+    LocationProvider
   ]
 })
 export class AppModule {}

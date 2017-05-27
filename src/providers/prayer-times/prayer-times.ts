@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import PrayerTimes from 'prayer-times';
 import { PrayerTimesResult } from './prayer-times-result';
 
 @Injectable()
 export class PrayerTimesProvider {
   private prayerTimes: any;
-  private method: string = 'Jafari';
-  private coordinates: [ number, number ] = [ 28.7869517, -81.3644117 ];
-  private timezone: number = -5;
+
+  public method: string = 'Jafari';
+  public coordinates: [ number, number ] = [ 28.7869517, -81.3644117 ];
+  public timezone: number = -5;
 
   constructor() {
     this.prayerTimes = new PrayerTimes();
@@ -29,6 +31,16 @@ export class PrayerTimesProvider {
 
   getTimes(): PrayerTimesResult {
     return this.prayerTimes.getTimes(new Date(), this.coordinates, this.timezone);
+  }
+
+  getTimesObservable(): Observable<PrayerTimesResult> {
+    return Observable
+      .interval(10000)
+      .startWith(0)
+      .map(() => {
+        return this.getTimes();
+      })
+      .share();
   }
 
 }

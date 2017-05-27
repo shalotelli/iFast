@@ -3,10 +3,50 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+
+    <ion-title>Settings</ion-title>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding [ngClass]="(canEat.check() | async) ? 'light' : 'dark'">
-  This is the settings page.
+<ion-content [ngClass]="(canEat.check() | async) ? 'light' : 'dark'">
+  <ion-list>
+    <ion-item>
+      <ion-row>
+        <ion-col>Long</ion-col>
+        <ion-col>{{prayerTimes.coordinates[0]}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Lat</ion-col>
+        <ion-col>{{prayerTimes.coordinates[1]}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button ion-button block (click)="refreshLocation()">
+            Refresh Location
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Prayer Time Method</ion-label>
+      <ion-select 
+        #method 
+        [(ngModel)]="prayerTimes.method" 
+        (ionChange)="prayerTimes.setMethod(method.value)">
+        <ion-option *ngFor="let method of prayerTimeMethods" 
+          [value]="method.value">
+          {{method.label}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Timezone</ion-label>
+      <ion-select [(ngModel)]="prayerTimes.timezone">
+        <ion-option value="-5">Eastern Time</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 </ion-content>
