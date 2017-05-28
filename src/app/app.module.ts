@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+import { ThreeDeeTouch } from '@ionic-native/three-dee-touch';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -39,12 +40,15 @@ import { LocationProvider } from '../providers/location/location';
     PrayerTimesProvider,
     Geolocation,
 
+    ThreeDeeTouch,
+    
     {
       provide: ErrorHandler, 
       useClass: IonicErrorHandler
     },
     CanEatProvider,
     LocationProvider
+    ThreeDeeTouchProvider,
   ]
 })
 export class AppModule {}

@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { CanEatProvider } from '../providers/can-eat/can-eat';
 import { LocationProvider } from '../providers/location/location';
+import { ThreeDeeTouchProvider } from '../providers/three-dee-touch/three-dee-touch';
 
 import { HomePage } from '../pages/home/home';
 import { SettingsPage } from '../pages/settings/settings';
@@ -25,8 +26,10 @@ export class MyApp {
     public splashScreen: SplashScreen,
     public canEat: CanEatProvider,
     private location: LocationProvider) {
+    private threeDeeTouch: ThreeDeeTouchProvider,
     this.initializeApp();
     this.setMenuItems();
+    this.threeDeeTouch.register();
   }
 
   openPage(page) {
