@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>MyApp</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <name>iFast</name>
+    <description>Can I eat yet?</description>
+    <author email="shalotelli@gmail.com" href="http://hashtagcoder.com/">Sha Alibhai</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
@@ -84,4 +84,7 @@
     <plugin name="cordova-plugin-device" spec="1.1.4" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <plugin name="cordova-plugin-geolocation" spec="~2.4.3" />
+    <plugin name="cordova-sqlite-storage" spec="~2.0.4" />
+    <plugin name="cordova-plugin-3dtouch" spec="~1.3.5" />
+    <engine name="ios" spec="~4.3.1" />
 </widget>
