@@ -1,0 +1,19 @@
+<ion-header no-border>
+  <ion-navbar [color]="(canEat.check() | async) ? 'secondary' : 'dark'">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    
+    <ion-title>Quran</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content [ngClass]="(canEat.check() | async) ? 'light' : 'dark'">
+  <ion-list>
+    <button ion-item *ngFor="let surah of quran.surahs" (click)="goToSurah(surah)">
+      <h2>{{surah.englishName}}</h2>
+      <p>{{surah.name}}</p>
+    </button>
+  </ion-list>
+</ion-content>

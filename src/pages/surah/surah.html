@@ -1,0 +1,14 @@
+<ion-header no-border>
+  <ion-navbar [color]="(canEat.check() | async) ? 'secondary' : 'dark'">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>{{surah.englishName}} - {{surah.englishNameTranslation}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <p class="verse" text-right *ngFor="let ayah of ayahs">{{ayah.text}}</p>
+</ion-content>
