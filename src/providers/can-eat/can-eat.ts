@@ -13,14 +13,28 @@ export class CanEatProvider {
     return Observable
       .interval(1000)
       .startWith(0)
-      .map(() => {
-        let times: PrayerTimesResult = this.prayerTimes.getTimes(),
+      .map(() => !this.isFastTime())
+      .share();
+  }
+
+  hoursLeft(): number {
+    let times: PrayerTimesResult = this.prayerTimes.getTimes(),
             fajr: moment.Moment = this.convertTimeToMoment(times.fajr),
             maghrib: moment.Moment = this.convertTimeToMoment(times.maghrib);
 
-        return !moment().isBetween(fajr, maghrib);
-      })
-      .share();
+    if (this.isFastTime()) {
+      return maghrib.diff(moment(), 'hours');
+    }
+
+    return 0;
+  }
+
+  private isFastTime(): boolean {
+    let times: PrayerTimesResult = this.prayerTimes.getTimes(),
+              fajr: moment.Moment = this.convertTimeToMoment(times.fajr),
+              maghrib: moment.Moment = this.convertTimeToMoment(times.maghrib);
+
+    return <boolean>moment().isBetween(fajr, maghrib);
   }
 
   private convertTimeToMoment(time: string): moment.Moment {
